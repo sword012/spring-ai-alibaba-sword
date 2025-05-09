@@ -24,8 +24,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
-import org.springframework.web.client.ResponseErrorHandler;
-import org.springframework.web.client.RestClient;
 
 /**
  * @author SCMRCORE
@@ -40,8 +38,7 @@ public class BaiduTranslateAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@Description("Baidu translation function for general text translation")
-	public BaiduTranslateService baiduTranslateFunction(BaiduTranslateProperties properties,
-			JsonParseTool jsonParseTool) {
+	public BaiduTranslateService baiduTranslate(BaiduTranslateProperties properties, JsonParseTool jsonParseTool) {
 
 		return new BaiduTranslateService(properties, new RestClientTool(jsonParseTool, properties), jsonParseTool);
 	}
